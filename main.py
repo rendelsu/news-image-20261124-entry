@@ -16,6 +16,8 @@ def main():
     os.makedirs(out_dir, exist_ok=True)
     dst = os.path.join(out_dir, "entry.png")
     shutil.copyfile(src, dst)
+    if os.path.getsize(dst) != os.path.getsize(src):
+        raise SystemExit("copy incomplete: size mismatch")
     print("wrote", dst, os.path.getsize(dst), "bytes")
 
 
